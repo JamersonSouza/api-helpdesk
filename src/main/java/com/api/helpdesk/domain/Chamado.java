@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.api.helpdesk.domain.dto.ChamadoDTO;
 import com.api.helpdesk.domain.enums.Prioridade;
 import com.api.helpdesk.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -54,7 +55,8 @@ public class Chamado implements Serializable{
         this.cliente = cliente;
     }
 
-    
+
+
     public Integer getId() {
         return id;
     }
@@ -62,6 +64,8 @@ public class Chamado implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
+
+   
 
     public LocalDate getDataAbertura() {
         return dataAbertura;

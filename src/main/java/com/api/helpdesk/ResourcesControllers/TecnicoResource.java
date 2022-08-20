@@ -4,7 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.catalina.connector.Response;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,7 +45,7 @@ public class TecnicoResource {
 
     //inserir um tecnico
     @PostMapping()
-    public ResponseEntity<TecnicoDTO> create(@RequestBody TecnicoDTO tecnicoDTO){
+    public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO tecnicoDTO){
         Tecnico newTec = tecnicoService.create(tecnicoDTO);
         URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
         .path("/{id}").buildAndExpand(newTec.getId()).toUri();
@@ -61,10 +62,9 @@ public class TecnicoResource {
 
     //atualização Tecnico
     @PutMapping("/{id}")
-    public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @RequestBody TecnicoDTO objDTO){
+    public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDTO){
         Tecnico oldObj = tecnicoService.update(id, objDTO);
         return ResponseEntity.ok().body(new TecnicoDTO(oldObj));
-
     }
     
 }

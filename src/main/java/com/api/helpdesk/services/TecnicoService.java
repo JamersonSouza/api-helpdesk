@@ -1,8 +1,9 @@
 package com.api.helpdesk.services;
 
-import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,7 +62,7 @@ public class TecnicoService {
     }
 
     //atualizacao de tecnico
-    public Tecnico update(Integer id, TecnicoDTO objDTO) {
+    public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
        objDTO.setId(id);
        Tecnico oldObj = findById(id);
        validaCpfAndEmail(objDTO);

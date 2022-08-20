@@ -6,6 +6,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.api.helpdesk.domain.Tecnico;
 import com.api.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -15,11 +21,15 @@ public class TecnicoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
+    @NotEmpty(message = "Campo NOME não pode ser vazio.")
     protected String nome;
-
+    @NotEmpty(message = "Campo CPF não pode ser vazio.")
+    @CPF(message = "Informe um CPF válido")
     protected String cpf;
-
+    @NotEmpty(message = "Campo E-mail não pode ser vazio.")
+    @Email(message = "Informe um E-mail Válido.")
     protected String email;
+    @Size(min = 8, message = "Campo SENHA deve conter no mínimo 8 caracteres.")
     protected String senha;
 
     protected Set<Integer> perfil = new HashSet<>();

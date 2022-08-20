@@ -57,6 +57,20 @@ public class TecnicoService {
  
      }
 
+    public void delete(Integer id) {
+        Tecnico obj = findById(id);
+        if(obj.getChamados().size() > 0){
+            throw new DataIntegrityViolationExceptions(
+                "Tecnico possui ordens de serviço em aberto"+
+                " e não pode ser apagado"
+            );
+            
+        }else{
+            tecnicoRepository.deleteById(id);
+        }
+
+    }
+
 
     
 }

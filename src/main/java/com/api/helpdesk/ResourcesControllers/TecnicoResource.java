@@ -1,5 +1,8 @@
 package com.api.helpdesk.ResourcesControllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,14 @@ public class TecnicoResource {
     public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id){
         Tecnico obj = tecnicoService.findById(id);
         return ResponseEntity.ok().body(new TecnicoDTO(obj));
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<TecnicoDTO>> findAll(){
+        List<Tecnico> listTec = tecnicoService.findAll();
+        List<TecnicoDTO> listTecDto = listTec.stream().map(obj -> new TecnicoDTO(obj))
+        .collect(Collectors.toList());
+        return ResponseEntity.ok().body(listTecDto);        
     }
     
 }

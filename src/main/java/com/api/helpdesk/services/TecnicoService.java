@@ -44,18 +44,7 @@ public class TecnicoService {
         return tecnicoRepository.save(newTec);
     }
 
-    private void validaCpfAndEmail( TecnicoDTO objDTO) {
-        Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
-        if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
-          throw new DataIntegrityViolationExceptions("CPF Já Cadastrado no Sistema");
-        }
  
-        obj = pessoaRepository.findByEmail(objDTO.getEmail());
-        if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
-         throw new DataIntegrityViolationExceptions("E-mail já cadastrado no sistema.");
-        }
- 
-     }
 
     public void delete(Integer id) {
         Tecnico obj = findById(id);
@@ -71,6 +60,27 @@ public class TecnicoService {
 
     }
 
+    //atualizacao de tecnico
+    public Tecnico update(Integer id, TecnicoDTO objDTO) {
+       objDTO.setId(id);
+       Tecnico oldObj = findById(id);
+       validaCpfAndEmail(objDTO);
+       oldObj = new Tecnico(objDTO);
+       return tecnicoRepository.save(oldObj);
+    }
 
+
+    private void validaCpfAndEmail( TecnicoDTO objDTO) {
+        Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
+        if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
+          throw new DataIntegrityViolationExceptions("CPF Já Cadastrado no Sistema");
+        }
+ 
+        obj = pessoaRepository.findByEmail(objDTO.getEmail());
+        if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
+         throw new DataIntegrityViolationExceptions("E-mail já cadastrado no sistema.");
+        }
+ 
+     }
     
 }

@@ -36,6 +36,15 @@ public class ChamadoService {
         return chamadoRepository.findAll();
     }
 
+    public Chamado update(Integer id, @Valid ChamadoDTO objDTO) {
+
+        objDTO.setId(id);
+        Chamado oldObj = findById(id);
+        oldObj = newChamado(objDTO);
+        return chamadoRepository.save(oldObj);
+
+    }
+
     public Chamado create(@Valid ChamadoDTO objDTO) {
         return chamadoRepository.save(newChamado(objDTO));
     }
@@ -60,4 +69,9 @@ public class ChamadoService {
         chamado.setObservacoes(obj.getObservacoes());
         return chamado;
      }
+
+
+
+
+
 }

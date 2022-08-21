@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.api.helpdesk.Exceptions.DataIntegrityViolationExceptions;
@@ -25,6 +26,9 @@ public class ClienteService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+    @Autowired
+	private BCryptPasswordEncoder encoder;
+
     public Cliente findById(Integer id) {
 
         Optional<Cliente> obj = clienteRepository.findById(id);
@@ -39,6 +43,7 @@ public class ClienteService {
     public Cliente create(ClienteDTO objDTO) {
 
         objDTO.setId(null);
+        objDTO.setSenha(encoder.encode(objDTO.getSenha()));
         validaCpfAndEmail(objDTO);
         //objeto Cliente recebe um Cliente dto para ser salvo
         Cliente newTec = new Cliente(objDTO);

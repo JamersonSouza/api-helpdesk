@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.api.helpdesk.domain.dto.ChamadoDTO;
 import com.api.helpdesk.domain.enums.Prioridade;
 import com.api.helpdesk.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;

@@ -42,5 +42,11 @@ public class ChamadoResources {
         return ResponseEntity.ok().body(objDTO);
     }
 
-    
+    @PostMapping
+    public ResponseEntity<ChamadoDTO> create(@Valid @RequestBody ChamadoDTO objDTO){
+        Chamado newobj = chamadoService.create(objDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+        .buildAndExpand(newobj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 }

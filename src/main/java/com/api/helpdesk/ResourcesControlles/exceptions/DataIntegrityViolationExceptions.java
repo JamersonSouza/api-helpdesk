@@ -1,4 +1,4 @@
-package com.api.helpdesk.Exceptions;
+package com.api.helpdesk.ResourcesControlles.exceptions;
 
 import org.springframework.dao.DataIntegrityViolationException;
 

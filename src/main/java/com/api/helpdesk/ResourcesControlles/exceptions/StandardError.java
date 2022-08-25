@@ -1,11 +1,11 @@
-package com.api.helpdesk.Exceptions;
+package com.api.helpdesk.ResourcesControlles.exceptions;
 
 import java.io.Serializable;
 
-public class StandardError  implements Serializable{
+public class StandardError implements Serializable{
 
     private static final long serialVersionUID = 1L;
-    
+
     private Long timestamp;
     private Integer status;
     private String error;
@@ -13,7 +13,6 @@ public class StandardError  implements Serializable{
     private String path;
 
     public StandardError(){
-        
     }
 
     public StandardError(Long timestamp, Integer status, String error, String message, String path) {
@@ -64,5 +63,6 @@ public class StandardError  implements Serializable{
         this.path = path;
     }
 
+    
     
 }

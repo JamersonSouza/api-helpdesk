@@ -1,4 +1,4 @@
-package com.api.helpdesk.ResourcesControllers;
+package com.api.helpdesk.ResourcesControlles;
 
 import java.net.URI;
 import java.util.List;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,20 +42,12 @@ public class ChamadoResources {
         return ResponseEntity.ok().body(objDTO);
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<ChamadoDTO> create(@Valid @RequestBody ChamadoDTO objDTO){
-        Chamado newobj = chamadoService.create(objDTO);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-        .buildAndExpand(newobj.getId()).toUri();
+        Chamado newObj = chamadoService.create(objDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+        .path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ChamadoDTO> update(@PathVariable Integer id, @Valid @RequestBody ChamadoDTO objDTO){
-
-        Chamado newObj = chamadoService.update(id, objDTO);
-        return ResponseEntity.ok().body(new ChamadoDTO(newObj));
-
-
-    }
+    
 }

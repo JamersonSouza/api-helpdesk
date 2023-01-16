@@ -63,14 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
   
     //método para configuração/liberação dos cors na aplicação 
     //para que a aplicação possa receber requisições de qualquer local
-    @Bean
-    CorsConfigurationSource corsConfigurationSource(){
-        CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
-        config.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+ 
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){

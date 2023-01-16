@@ -3,8 +3,6 @@ package com.api.helpdesk.ResourcesControlles.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.validation.FieldError;
-
 public class ValidationError extends StandardError{
 
     private static final long serialVersionUID = 1L;

@@ -24,7 +24,7 @@ import com.api.helpdesk.services.ChamadoService;
 
 @RestController()
 @RequestMapping("/chamados")
-@CrossOrigin(origins = "https://helpdesk-frontend-pvpgiti6w-jamersonsouza.vercel.app")
+@CrossOrigin(origins = "*")
 public class ChamadoResources {
 
     @Autowired

@@ -26,7 +26,7 @@ import com.api.helpdesk.services.ClienteService;
 
 @RestController
 @RequestMapping(value = "/clientes")
-@CrossOrigin(origins = "https://helpdesk-frontend-pvpgiti6w-jamersonsouza.vercel.app")
+@CrossOrigin(origins = "*")
 public class ClienteResource {
 
     @Autowired

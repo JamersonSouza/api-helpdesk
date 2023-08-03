@@ -25,7 +25,7 @@ import com.api.helpdesk.services.TecnicoService;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
-@CrossOrigin(origins = "https://helpdesk-frontend-pvpgiti6w-jamersonsouza.vercel.app")
+@CrossOrigin(origins = "*")
 public class TecnicoResource {
 
     @Autowired

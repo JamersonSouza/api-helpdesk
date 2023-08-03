@@ -8,15 +8,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableWebMvc
-public class HelpdeskApplication implements WebMvcConfigurer{
+public class HelpdeskApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelpdeskApplication.class, args);
 	}
 
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS");
-	}
 
 }

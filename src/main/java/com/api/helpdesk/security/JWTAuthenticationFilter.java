@@ -17,7 +17,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.api.helpdesk.domain.dto.CredenciaisDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "https://helpdesk-frontend-pvpgiti6w-jamersonsouza.vercel.app")
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
     
     private AuthenticationManager authenticationManager;

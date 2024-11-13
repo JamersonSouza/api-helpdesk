@@ -5,5 +5,6 @@ RUN mvn clean package -X -DskipTests
 
 FROM openjdk:11-jdk-slim-sid
 WORKDIR /app
-COPY --from=build ./app/target/*.jar ./keyforge.jar
-ENTRYPOINT java -jar keyforge.jar
+ENV JAVA_TOOL_OPTIONS="-Xmx400m"
+COPY --from=build ./app/target/*.jar ./helpdesk.jar
+ENTRYPOINT ["java", "-jar", "helpdesk.jar"]
